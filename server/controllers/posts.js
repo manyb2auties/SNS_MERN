@@ -6,7 +6,7 @@ import PostMessage from "../models/postMessage.js"
 
 export const getPosts = async (req, res) => {
     try {
-        const postMessages = await PostMessage.find(PostMessage.find); //async
+        const postMessages = await PostMessage.find(); //async
 
         console.log(postMessages)
 

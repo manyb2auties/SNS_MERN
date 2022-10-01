@@ -9,8 +9,6 @@ import postRoutes from "./routes/posts.js";
 
 const app = express();
 
-app.use('/posts', postRoutes);
-// postRoutes(post.js)에 있는 모든 routes는 실제로는 그 앞에 '/posts' 가 붙는다.
 
 // app.use(bodyParser.json({ limit: "30mb", extended:true })) - 옛날 코드
 app.use(express.json({ limit: "30mb"}))
@@ -25,6 +23,9 @@ app.use(express.urlencoded({ limit:"30mb", extended:true}))
 
 app.use(cors())
 // 모든 도메인에서 제한 없이 해당 서버에 요청을 보내고 응답을 받을 수 있다.
+
+app.use('/posts', postRoutes);
+// postRoutes(post.js)에 있는 모든 routes는 실제로는 그 앞에 '/posts' 가 붙는다.
 
 const CONNECTION_URL = 'mongodb+srv://dami_javascriptmastery:javascriptmastery12@cluster0.y8hvsbb.mongodb.net/?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 3001;
